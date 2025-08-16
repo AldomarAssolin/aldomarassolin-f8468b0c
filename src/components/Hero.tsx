@@ -8,7 +8,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="w-screen min-h-screen relative overflow-hidden bg-gradient-to-br from-background via-background to-muted flex items-center py-5">
+    <section className="w-screen min-h-screen relative overflow-hidden bg-gradient-to-br from-background via-background to-muted flex items-center py-5 pb-24 lg:pb-0">
       {/* Background decorative elements */}
       <div className="absolute top-20 left-20 w-32 h-32 bg-primary/10 rounded-full blur-3xl animate-float"></div>
       <div className="absolute bottom-20 right-20 w-40 h-40 bg-primary-glow/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
@@ -17,7 +17,7 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="space-y-8 animate-fadeInUp">
-            <div className="flex items-center gap-3 text-primary font-medium">
+            <div className="flex items-center gap-3 text-primary font-medium px-2">
               <Wrench className="w-5 h-5" />
               <span>De Soldador para Desenvolvedor</span>
               <Code className="w-5 h-5" />
@@ -32,7 +32,7 @@ const Hero = () => {
                 <span className="block text-4xl lg:text-5xl">Full Stack</span>
               </h1>
               
-              <p className="min-w-screen text-xs sm:text-xl text-muted-foreground leading-relaxed max-w-lg px-2">
+              <p className="min-w-screen text-muted-foreground leading-relaxed max-w-lg px-2">
                 Aos 41 anos, faço minha transição de carreira de soldador para analista de sistemas. 
                 Especializado em PHP, Laravel e tecnologias web modernas.
               </p>
@@ -59,9 +59,9 @@ const Hero = () => {
             </div>
 
             {/* Tech stack indicators */}
-            <div className="w-screen flex items-center gap-6 pt-8 border-t border-border/50">
+            <div className="w-screen md:flex items-center gap-6 pt-8 px-2 border-t border-border/50">
               <span className="text-sm text-muted-foreground">Tecnologias:</span>
-              <div className="flex flex-wrap gap-4 text-sm font-medium text-foreground">
+              <div className="flex flex-wrap gap-4 text-sm font-medium text-foreground mt-2 md:mt-0">
                 <span className="px-3 py-1 bg-muted rounded-full">PHP</span>
                 <span className="px-3 py-1 bg-muted rounded-full">Laravel</span>
                 <span className="px-3 py-1 bg-muted rounded-full">Livewire</span>
@@ -72,7 +72,7 @@ const Hero = () => {
 
           {/* Image */}
           <div className="relative px-2 lg:px-0">
-            <div className="max-w-sm md:max-w-3xl relative rounded-2xl overflow-hidden shadow-2xl">
+            <div className="mx-auto max-w-sm md:max-w-2xl relative rounded-2xl overflow-hidden shadow-2xl">
               <img 
                 src={heroImage} 
                 alt="Workspace mostrando transição de soldador para desenvolvedor"
