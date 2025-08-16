@@ -35,16 +35,16 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "seu.email@exemplo.com",
-      href: "mailto:seu.email@exemplo.com",
+      value: "assolinaldomar@gmail.com",
+      href: "mailto:assolinaldomar@gmail.com",
       color: "text-blue-500",
       bgColor: "bg-blue-500/10"
     },
     {
       icon: Phone,
       label: "Telefone",
-      value: "(11) 99999-9999",
-      href: "tel:+5511999999999",
+      value: "(55) 99618-6446",
+      href: "tel:+5555996186446",
       color: "text-green-500",
       bgColor: "bg-green-500/10"
     },
@@ -59,8 +59,8 @@ const Contact = () => {
     {
       icon: Linkedin,
       label: "LinkedIn",
-      value: "/in/seu-perfil",
-      href: "https://linkedin.com/in/seu-perfil",
+      value: "/in/aldomarassolin",
+      href: "https://www.linkedin.com/in/aldomarassolin",
       color: "text-blue-600",
       bgColor: "bg-blue-600/10"
     }
@@ -114,13 +114,13 @@ const Contact = () => {
               </p>
               <div className="flex gap-3">
                 <Button variant="outline" size="sm" asChild>
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com/AldomarAssolin" target="_blank" rel="noopener noreferrer">
                     <Github className="w-4 h-4 mr-2" />
                     GitHub
                   </a>
                 </Button>
                 <Button variant="outline" size="sm" asChild>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.linkedin.com/in/aldomarassolin" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="w-4 h-4 mr-2" />
                     LinkedIn
                   </a>

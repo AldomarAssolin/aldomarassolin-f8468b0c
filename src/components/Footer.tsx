@@ -50,7 +50,7 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Conecte-se</h4>
             <div className="flex gap-4">
               <a 
-                href="https://github.com" 
+                href="https://github.com/AldomarAssolin" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-muted rounded-full flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
@@ -58,7 +58,7 @@ const Footer = () => {
                 <Github className="w-5 h-5" />
               </a>
               <a 
-                href="https://linkedin.com" 
+                href="https://www.linkedin.com/in/aldomarassolin" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-muted rounded-full flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
@@ -66,7 +66,7 @@ const Footer = () => {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a 
-                href="mailto:seu.email@exemplo.com"
+                href="mailto:assolinaldomar@gmail.com"
                 className="w-10 h-10 bg-muted rounded-full flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
               >
                 <Mail className="w-5 h-5" />
