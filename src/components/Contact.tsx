@@ -20,7 +20,7 @@ const Contact = () => {
 
     try{
 
-      const response = await fetch('https://manex.app.n8n.cloud/webhook-test/22e9fe42-ec3d-46d1-89be-142a5c9c169f',
+      const response = await fetch('https://manex.app.n8n.cloud/webhook-test/contato-portfolio',
         {
           method: 'POST',
           headers:{
