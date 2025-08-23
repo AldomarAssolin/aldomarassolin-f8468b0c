@@ -15,13 +15,45 @@ const Contact = () => {
   });
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Mensagem enviada!",
-      description: "Obrigado pelo contato. Retornarei em breve!",
-    });
-    setFormData({ name: '', email: '', message: '' });
+
+    try{
+
+      const response = await fetch('https://manex.app.n8n.cloud/webhook-test/22e9fe42-ec3d-46d1-89be-142a5c9c169f',
+        {
+          method: 'POST',
+          headers:{
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+      });
+
+      if(response.ok){
+        toast({
+          title: "Mensagem enviada!",
+          description: "Obrigado pelo contato. Retornarei em breve!",
+        });
+        setFormData({name: '', email: '', message: ''});
+      }else{
+        toast({
+          title: "Erro ao Enviar",
+          description: "Tente novamente mais tarde.",
+          variant: "destructive",
+        });
+      }
+    }catch(error){
+      toast({
+        title: "Falha na conexão",
+        description: "Não foi possível conectar ao servidor.",
+        variant: "destructive",
+      })
+    };
+    // toast({
+    //   title: "Mensagem enviada!",
+    //   description: "Obrigado pelo contato. Retornarei em breve!",
+    // });
+    // setFormData({ name: '', email: '', message: '' });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
