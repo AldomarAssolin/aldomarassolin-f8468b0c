@@ -6,11 +6,16 @@ import { Label } from "@/components/ui/label";
 import { Mail, Phone, MapPin, Linkedin, Github, Send } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import {
+  Select, SelectTrigger, SelectValue, SelectContent, SelectItem
+} from "@/components/ui/select";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    telefone: '',
+    tipo_contato: '',
     message: ''
   });
   const { toast } = useToast();
@@ -18,37 +23,47 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    try{
+    if (!formData.tipo_contato) {
+      toast({
+        title: "Selecione o tipo de contato",
+        description: "Escolha uma opção antes de enviar.",
+        variant: "destructive",
+      });
+      return;
+    }
 
-      const response = await fetch('https://manex.app.n8n.cloud/webhook-test/contato-portfolio',
+    try {
+
+      const response = await fetch('https://teste-n8n.ennj8e.easypanel.host/webhook-test/portfolio-contato',
         {
           method: 'POST',
-          headers:{
+          headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(formData),
-      });
+        });
 
-      if(response.ok){
+      if (response.ok) {
         toast({
           title: "Mensagem enviada!",
           description: "Obrigado pelo contato. Retornarei em breve!",
         });
-        setFormData({name: '', email: '', message: ''});
-      }else{
+        setFormData({ name: '', email: '', telefone: '', tipo_contato: '', message: '' });
+      } else {
         toast({
           title: "Erro ao Enviar",
           description: "Tente novamente mais tarde.",
           variant: "destructive",
         });
       }
-    }catch(error){
+    } catch (error) {
       toast({
         title: "Falha na conexão",
         description: "Não foi possível conectar ao servidor.",
         variant: "destructive",
       })
     };
+
     // toast({
     //   title: "Mensagem enviada!",
     //   description: "Obrigado pelo contato. Retornarei em breve!",
@@ -116,7 +131,7 @@ const Contact = () => {
               <div className="grid gap-4">
                 {contactInfo.map((info, index) => (
                   <Card key={index} className="p-4 hover:shadow-md transition-all duration-300 bg-gradient-to-br from-card to-muted/20 border-0">
-                    <a 
+                    <a
                       href={info.href}
                       className="flex items-center gap-4 group"
                       target={info.href.startsWith('http') ? '_blank' : undefined}
@@ -140,8 +155,8 @@ const Contact = () => {
             <Card className="p-6 bg-gradient-to-br from-primary/5 to-primary-glow/5 border border-primary/20">
               <h4 className="text-xl font-semibold mb-3">Pronto para começar?</h4>
               <p className="text-muted-foreground mb-4">
-                Se você está procurando por um desenvolvedor dedicado e em constante 
-                evolução, com uma perspectiva única vinda da experiência industrial, 
+                Se você está procurando por um desenvolvedor dedicado e em constante
+                evolução, com uma perspectiva única vinda da experiência industrial,
                 eu adoraria fazer parte do seu próximo projeto.
               </p>
               <div className="flex gap-3">
@@ -176,7 +191,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
@@ -189,7 +204,33 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
+              <div className="space-y-2">
+                <Label htmlFor="telefone">Telefone</Label>
+                <Input
+                  id="telefone"
+                  name="telefone"
+                  type="text"
+                  value={formData.telefone}
+                  onChange={handleChange}
+                  placeholder="99999999999"
+                  required
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="tipo_contato">Assunto</Label>
+                <Select value={formData.tipo_contato} onValueChange={(v) => setFormData((prev) => ({ ...prev, tipo_contato: v }))}>
+                  <SelectTrigger id="tipo_contato"><SelectValue placeholder="Selecione..." /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="oportunidade">Oportunidade de trabalho</SelectItem>
+                    <SelectItem value="freelance">Freelance</SelectItem>
+                    <SelectItem value="colaboracao">Colaboração</SelectItem>
+                    <SelectItem value="outros">outros</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
               <div className="space-y-2">
                 <Label htmlFor="message">Mensagem</Label>
                 <Textarea
@@ -202,7 +243,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
               <Button type="submit" variant="hero" size="lg" className="w-full">
                 <Send className="w-4 h-4 mr-2" />
                 Enviar Mensagem
