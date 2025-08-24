@@ -34,7 +34,7 @@ const Contact = () => {
 
     try {
 
-      const response = await fetch('https://teste-n8n.ennj8e.easypanel.host/webhook/portfolio-contato',
+      const response = await fetch('https://teste-n8n.ennj8e.easypanel.host/webhook-test/portfolio-contato',
         {
           method: 'POST',
           headers: {
